@@ -15,7 +15,6 @@ namespace NumToByte
             {
                 buffer = bytes.ConvertNumericToByte(buffer);
             }
-            
             if (buffer != "Invalid entry" && buffer is not null)
             {
                 buffer = bytes.FormatToSourcemodSyntax(buffer);
@@ -30,6 +29,7 @@ namespace NumToByte
             {
                 Console.WriteLine("Invalid entry!");
             }
+
             Console.WriteLine();
             Main();
         }
