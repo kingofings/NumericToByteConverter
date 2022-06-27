@@ -21,9 +21,7 @@ namespace NumToByte
             {
                 returnVal = BitConverter.ToString(BitConverter.GetBytes(intValue));
             }
-
-            returnVal = await FormatToSourcemodSyntaxAsync(returnVal);
-            return returnVal;
+            return returnVal = await FormatToSourcemodSyntaxAsync(returnVal);
         }
 
         private Task<string> FormatToSourcemodSyntaxAsync(string input)
