@@ -4,7 +4,7 @@ namespace NumToByte
 {
     internal class Program
     {
-        static void Main()
+        static async Task Main()
         {
             Console.WriteLine("Please enter a numeric data type to convert to bytes:");
             string? buffer = Console.ReadLine();
@@ -13,11 +13,10 @@ namespace NumToByte
 
             if (buffer is not null)
             {
-                buffer = bytes.ConvertNumericToByte(buffer);
+                buffer = await bytes.ConvertNumericToByteAsync(buffer);
             }
             if (buffer != "Invalid entry" && buffer is not null)
             {
-                buffer = bytes.FormatToSourcemodSyntax(buffer);
                 Console.WriteLine();
                 Console.WriteLine("Bytes: " + buffer);
                 Clipboard clipboard = new Clipboard();
@@ -31,7 +30,7 @@ namespace NumToByte
             }
 
             Console.WriteLine();
-            Main();
+            await Main();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace NumToByte
 {
     internal class NumericToByte
     {
-        public string ConvertNumericToByte(string input)
+        public async Task<string> ConvertNumericToByteAsync(string input)
         {
             string returnVal = "Invalid entry";
             float floatValue;
@@ -21,13 +21,19 @@ namespace NumToByte
             {
                 returnVal = BitConverter.ToString(BitConverter.GetBytes(intValue));
             }
+
+            returnVal = await FormatToSourcemodSyntaxAsync(returnVal);
             return returnVal;
         }
 
-        public string FormatToSourcemodSyntax(string input)
+        private Task<string> FormatToSourcemodSyntaxAsync(string input)
         {
-            string returnVal = "\\x" + input.Replace("-", "\\x");
-            return returnVal;
+            string returnVal = input;
+            if (input != "Invalid entry")
+            {
+                returnVal = "\\x" + input.Replace("-", "\\x");
+            }
+            return Task.FromResult<string>(returnVal);
         }
     }
 }
